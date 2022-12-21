@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+button {
+    border: none;
+    background-color: #00CE5A;
+    border-radius: 20px;
+    font-size: 30px;
+    padding: 8px 25px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 50px;
+    transition: all 0.2s ease-in-out;
+
+    img {
+        height: 25px;
+        margin-right: 8px;
+    }
+
+    p {
+        color: black;
+    }
+
+    &:hover {
+        translate: 0 -5px;
+        box-shadow: 0 0 20px 2px #00CE5A;
+    }
+}

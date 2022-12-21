@@ -1,0 +1,31 @@
+:host {
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+}
+
+img {
+    border-radius: 20px;
+    height: 150px;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    // box-shadow: 2px 2px 10px 1px grey;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin-left: 5px;
+}
+
+p#title {
+    margin-top: 5px;
+}
+
+p#author {
+    font-size: 10px;
+    color: grey;
+}

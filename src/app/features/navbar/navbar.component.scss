@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top: 1px solid white;
+}
+
+div {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: calc(100vw / 3);
+    cursor: pointer;
+
+    img {
+        height: 30px;
+        margin-bottom: 5px;
+    }
+}

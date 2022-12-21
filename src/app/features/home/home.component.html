@@ -1,0 +1,13 @@
+<app-header>Home</app-header>
+<app-currentSong></app-currentSong>
+<h2>Top Songs</h2>
+<div>
+    <app-songPreview *ngFor="let song of topSongs" [src]="song.imageSrc" [title]="song.title" [type]="song.type"
+        [artist]="song.artist" [link]="song.link"></app-songPreview>
+</div>
+<h2>Top Artists</h2>
+<div>
+    <app-artistPreview *ngFor="let artist of topArtists" [src]="artist.imageSrc" [link]="artist.link"
+        [name]="artist.name"></app-artistPreview>
+</div>
+<app-navbar></app-navbar>

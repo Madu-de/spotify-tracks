@@ -1,0 +1,13 @@
+<a [href]="spotifyLink" id="current-song-spotify-link" target="_blank">
+  <img [src]="currentSongImg" id="current-song-img">
+  <div>
+    <p id="current-song-text-title">{{title}}</p>
+    <p id="current-song-text-author">{{author}}</p>
+  </div>
+</a>
+<!-- TODO -->
+<img src="assets/imgs/play.svg" alt="Play Button" [ngStyle]="{'display': isPlaying ? '' : 'none'}"
+  (click)="player.play(); isPlaying = !isPlaying; " appHotkey=" " class="current-song-toggle-buttons">
+<img src="assets/imgs/pause.svg" alt="Pause Button" [ngStyle]="{'display': isPlaying ? 'none' : ''}"
+  (click)="player.pause(); isPlaying = !isPlaying;" class="current-song-toggle-buttons">
+<!-- <div id="bar"></div> -->

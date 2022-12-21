@@ -1,18 +1,36 @@
+import { ArtistPreviewComponent } from './features/artistPreview/artistPreview.component';
+import { HotkeyDirective } from './directives/hotkey.directive';
+import { CurrentSongComponent } from './features/currentSong/currentSong.component';
+import { HeaderComponent } from './features/header/header.component';
+import { NavbarComponent } from './features/navbar/navbar.component';
+import { ConnectionService } from './services/connection.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './features/login/login.component';
+import { HomeComponent } from './features/home/home.component';
+import { SongPreviewComponent } from "./features/songPreview/songPreview.component";
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    NavbarComponent,
+    HeaderComponent,
+    CurrentSongComponent,
+    HotkeyDirective,
+    SongPreviewComponent,
+    ArtistPreviewComponent
   ],
+  providers: [ConnectionService],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    AppRoutingModule,
+  ]
 })
 export class AppModule { }

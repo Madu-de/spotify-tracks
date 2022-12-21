@@ -1,0 +1,5 @@
+<a [href]="link">
+    <img [src]="src" alt="Album">
+    <p id="title">{{(title.length>13)? (title|slice:0:13)+'...':(title)}}</p>
+    <p id="author">{{type | uppercase }} - {{artist}}</p>
+</a>
