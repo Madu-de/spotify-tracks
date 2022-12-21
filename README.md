@@ -25,3 +25,43 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# Documentation
+
+## Services
+- ConnectionService
+    - `connectToSpotify()`
+        - Redirects to the Spotify login page and saves the token.
+    - `sendGetRequestToSpotify(url)`      
+        - Sends a get request to the Spotify API.
+    - `sendPutRequestToSpotify(url)`
+        - Sends a put request to the Spotify API.
+- SpotifyArtistService
+    - `getArtist(id)`
+        - Returns the artist who has the requested id.
+    - `getArtistAlbums(id)`
+        - Returns all albums of the artist who has the requested id.
+    - `getArtistsTopTracks(id)`
+        - Returns the top tracks of the artist who has the requested id.
+- SpotifyPlayerService
+    - `getPlayer()`
+        - Returns the player from the user.
+    - `play()`
+        - Sets the playback on play.
+    - `pause()`
+        - Sets the playback on pause
+- SpotifySearchService
+    - `search()`
+        - Returns all search results
+- SpotifyUserService
+    - `getUser()`
+        - Returns the logged user.
+    - `getUserName()`
+        - Returns the name of the user.
+    - `getUserEmail()`
+        - Returns the email of the user.
+    - `getUserProfilePicture()`
+        - Returns the user profile picture.
+    - `getUserTopItem(topItemType)`
+        - Returns the top items of the user.
