@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Input() title: string = '';
+  public profilePicture: string = '';
 
   constructor(public spotifyUser: SpotifyUserService) { }
 
@@ -17,9 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   async loadProfilePicture() {
-    let pb: string = await this.spotifyUser.getUserProfilePicture();
-    let image = <HTMLImageElement>document.getElementById('profile-picture');
-    image.src = pb;
+    this.profilePicture = await this.spotifyUser.getUserProfilePicture();
   }
 
 }
