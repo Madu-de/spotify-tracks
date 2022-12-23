@@ -12,4 +12,15 @@ export class Track {
         this.artist = artist;
         this.link = link;
     }
+
+    static parseToTrack(item: any): Track {
+        return new Track(
+            item.album?.images[1].url || item.images[1].url,
+            item.name,
+            item.album_group || item.type,
+            item.artists[0].name,
+            item.external_urls.spotify
+        )
+    }
+
 }

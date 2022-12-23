@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './features/login/login.component';
 import { HomeComponent } from './features/home/home.component';
 import { SongPreviewComponent } from "./features/songPreview/songPreview.component";
+import { SongListPreviewComponent } from './features/songListPreview/songListPreview.component';
+import { ArtistListPreviewComponent } from './features/artistListPreview/artistListPreview.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { SongPreviewComponent } from "./features/songPreview/songPreview.compone
     CurrentSongComponent,
     HotkeyDirective,
     SongPreviewComponent,
-    ArtistPreviewComponent
+    ArtistPreviewComponent,
+    SongListPreviewComponent,
+    ArtistListPreviewComponent
   ],
   providers: [ConnectionService],
   bootstrap: [AppComponent],

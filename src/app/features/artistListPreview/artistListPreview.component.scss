@@ -1,0 +1,10 @@
+:host {
+    display: block;
+}
+
+div {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    margin-top: 20px;
+}

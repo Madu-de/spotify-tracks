@@ -50,10 +50,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     - `play()`
         - Sets the playback on play.
     - `pause()`
-        - Sets the playback on pause
+        - Sets the playback on pause.
 - SpotifySearchService
     - `search()`
-        - Returns all search results
+        - Returns all search results.
 - SpotifyUserService
     - `getUser()`
         - Returns the logged user.

@@ -1,0 +1,5 @@
+<h2>{{title}}</h2>
+<div>
+  <app-songPreview *ngFor="let song of songs" [src]="song.imageSrc" [title]="song.title" [type]="song.type"
+    [artist]="song.artist" [link]="song.link"></app-songPreview>
+</div>

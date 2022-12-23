@@ -8,4 +8,12 @@ export class Artist {
         this.name = name;
         this.link = link;
     }
+
+    static parseToArtist(item: any): Artist {
+        return new Artist(
+            item.images[1].url,
+            item.name,
+            item.external_urls.spotify
+        )
+    }
 }

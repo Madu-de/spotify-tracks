@@ -1,16 +1,8 @@
-@media screen and (min-width: 768px) {
-    :host {
-        width: 768px;
-    }
-}
-
-h2 {
+app-songListPreview,
+app-artistListPreview {
     margin: 20px;
 }
 
-div {
-    margin: 20px;
-    display: flex;
-    gap: 20px;
-    overflow-x: scroll;
+app-songListPreview:nth-child(4) {
+    padding-bottom: 200px;
 }
