@@ -14,7 +14,8 @@ export class SpotifyArtistService {
   }
 
   async getArtistAlbums(id: string) {
-    let albums = await this.connection.sendGetRequestToSpotify(`/artists/${id}/albums`);
+    let albums = await this.connection.sendGetRequestToSpotify(`/artists/${id}/albums?album_type=single&limit=1`);
+    console.log(albums);
     return albums;
   }
 

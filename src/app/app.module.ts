@@ -1,3 +1,4 @@
+import { SpotifyArtistService } from 'src/app/services/spotifyArtist.service';
 import { ArtistPreviewComponent } from './features/artistPreview/artistPreview.component';
 import { HotkeyDirective } from './directives/hotkey.directive';
 import { CurrentSongComponent } from './features/currentSong/currentSong.component';
@@ -14,6 +15,11 @@ import { HomeComponent } from './features/home/home.component';
 import { SongPreviewComponent } from "./features/songPreview/songPreview.component";
 import { SongListPreviewComponent } from './features/songListPreview/songListPreview.component';
 import { ArtistListPreviewComponent } from './features/artistListPreview/artistListPreview.component';
+import { CallbackComponent } from './features/callback/callback.component';
+import { SpotifyPlayerService } from './services/spotifyPlayer.service';
+import { SpotifySearchService } from './services/spotifySearch.service';
+import { SpotifyUserService } from './services/spotifyUser.service';
+import { CookieService } from './services/cookie.service';
 
 
 @NgModule({
@@ -28,9 +34,10 @@ import { ArtistListPreviewComponent } from './features/artistListPreview/artistL
     SongPreviewComponent,
     ArtistPreviewComponent,
     SongListPreviewComponent,
-    ArtistListPreviewComponent
+    ArtistListPreviewComponent,
+    CallbackComponent
   ],
-  providers: [ConnectionService],
+  providers: [ConnectionService, SpotifyArtistService, SpotifyPlayerService, SpotifySearchService, SpotifyUserService, CookieService],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,

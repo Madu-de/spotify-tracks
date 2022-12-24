@@ -1,6 +1,5 @@
 import { SpotifyUserService } from './../../services/spotifyUser.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Artist } from 'src/app/classes/Artist';
 import { Track } from 'src/app/classes/Track';
 import { TopItemType } from 'src/app/enums/TopItemType.enum';
@@ -20,12 +19,9 @@ export class HomeComponent implements OnInit {
   public topArtists: Artist[] = [];
   public lastReleasesByTopArtists: Track[] = [];
 
-  constructor(private route: ActivatedRoute, private connectionService: ConnectionService, private user: SpotifyUserService, public player: SpotifyPlayerService, private artist: SpotifyArtistService) { }
+  constructor(private connectionService: ConnectionService, private user: SpotifyUserService, public player: SpotifyPlayerService, private artist: SpotifyArtistService) { }
 
   async ngOnInit() {
-    let variables = this.getAllFragmentVariables();
-    this.connectionService.token = <string>variables.get('access_token');
-
     // Get Top Songs
     let topSongs = await this.user.getUserTopItem(TopItemType.TRACKS);
     topSongs.items.forEach((item: any) => {
@@ -46,16 +42,5 @@ export class HomeComponent implements OnInit {
       console.log(albums.items[0]);
       this.lastReleasesByTopArtists.push(Track.parseToTrack(albums.items[0]))
     });
-  }
-
-  getAllFragmentVariables(): Map<string, string> {
-    let variableArray: Map<string, string> = new Map();
-    this.route.fragment.subscribe(fragment => {
-      fragment?.split('&').forEach(variable => {
-        let splittetVariable = variable.split('=');
-        variableArray.set(splittetVariable[0], splittetVariable[1]);
-      });
-    });
-    return variableArray;
   }
 }

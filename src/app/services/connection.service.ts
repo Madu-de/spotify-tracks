@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { CookieService } from './cookie.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConnectionService {
 
-  public token: string = '';
+  public token: string = <string>this.cookie.get('token');
   public spotifyBaseUrl: string = 'https://api.spotify.com/v1';
 
-  constructor() { }
+  constructor(private cookie: CookieService) { }
+
 
   connectToSpotify() {
     let client_id: string = <string>environment['CLIENT_ID'];
