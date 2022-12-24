@@ -8,10 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SongPreviewComponent implements OnInit {
 
   @Input() src: string = '';
-  @Input() title: string = '';
-  @Input() type: string = '';
+  @Input() songTitle: string = '';
+  @Input() songType: string = '';
   @Input() artist: string = '';
-  @Input() link: string = '';
+  @Input() songLink: string = '';
 
   constructor() { }
 

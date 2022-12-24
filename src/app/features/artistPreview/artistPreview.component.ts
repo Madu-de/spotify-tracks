@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ArtistPreviewComponent implements OnInit {
 
   @Input() src: string = '';
-  @Input() link: string = '';
-  @Input() name: string = '';
+  @Input() artistLink: string = '';
+  @Input() artistName: string = '';
 
   constructor() { }
 

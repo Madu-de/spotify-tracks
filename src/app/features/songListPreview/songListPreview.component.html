@@ -1,5 +1,5 @@
-<h2>{{title}}</h2>
+<h2>{{listTitle}}</h2>
 <div>
-  <app-songPreview *ngFor="let song of songs" [src]="song.imageSrc" [title]="song.title" [type]="song.type"
-    [artist]="song.artist" [link]="song.link"></app-songPreview>
+  <app-songPreview *ngFor="let song of songs" [src]="song.imageSrc" [songTitle]="song.title" [songType]="song.type"
+    [artist]="song.artist" [songLink]="song.link"></app-songPreview>
 </div>

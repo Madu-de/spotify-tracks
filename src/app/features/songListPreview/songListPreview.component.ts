@@ -10,7 +10,7 @@ import { Track } from 'src/app/classes/Track';
 export class SongListPreviewComponent implements OnInit {
 
   @Input() songs: Track[] = [];
-  @Input() title: string = '';
+  @Input() listTitle: string = '';
 
   constructor() { }
 

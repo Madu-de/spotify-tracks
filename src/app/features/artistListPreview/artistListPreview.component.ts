@@ -9,7 +9,7 @@ import { Artist } from 'src/app/classes/Artist';
 export class ArtistListPreviewComponent implements OnInit {
 
   @Input() artists: Artist[] = [];
-  @Input() title: string = '';
+  @Input() listTitle: string = '';
 
   constructor() { }
 

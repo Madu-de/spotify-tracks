@@ -1,5 +1,5 @@
-<h2>{{title}}</h2>
+<h2>{{listTitle}}</h2>
 <div>
-  <app-artistPreview *ngFor="let artist of artists" [src]="artist.imageSrc" [link]="artist.link"
-    [name]="artist.name"></app-artistPreview>
+  <app-artistPreview *ngFor="let artist of artists" [src]="artist.imageSrc" [artistLink]="artist.link"
+    [artistName]="artist.name"></app-artistPreview>
 </div>
