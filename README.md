@@ -65,3 +65,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         - Returns the user profile picture.
     - `getUserTopItem(topItemType)`
         - Returns the top items of the user.
+- CookieService
+    - `set(key, value)`
+        - Creates a new Cookie
+    - `get(key)`
+        - Returns the value of the cookie
+    - `getAll()`
+        - Returns all cookies
