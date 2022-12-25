@@ -40,8 +40,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - SpotifyArtistService
     - `getArtist(id)`
         - Returns the artist who has the requested id.
-    - `getArtistAlbums(id)`
-        - Returns all albums of the artist who has the requested id.
+    - `getLastSingle(id)`
+        - Returns the last single of the artist who has the requested id
+    - `getLastAlbum(id)`
+        - Returns the last album of the artist who has the requested id.
+    - `getLastFeature(id)`
+        - Returns the last feature of the artist who has the requested id.
+    - `getLastRelease(id)`
+        - Returns the last release of the artist who has the requested id.
     - `getArtistsTopTracks(id)`
         - Returns the top tracks of the artist who has the requested id.
 - SpotifyPlayerService
