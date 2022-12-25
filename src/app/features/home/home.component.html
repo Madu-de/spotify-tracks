@@ -1,6 +1,8 @@
 <app-header title="Home"></app-header>
 <app-songListPreview [songs]="topSongs" listTitle="Top Songs"></app-songListPreview>
 <app-artistListPreview [artists]="topArtists" listTitle="Top Artists"></app-artistListPreview>
-<app-songListPreview [songs]="lastReleasesByTopArtists" listTitle="Last Singles"></app-songListPreview>
+<app-songListPreview [songs]="lastReleasesByTopArtist" listTitle="Last Releases"></app-songListPreview>
+<app-songListPreview [songs]="lastSinglesByTopArtists" listTitle="Last Singles"></app-songListPreview>
+<app-songListPreview [songs]="lastAlbumsByTopArtists" listTitle="Last Albums"></app-songListPreview>
 <app-currentSong></app-currentSong>
 <app-navbar></app-navbar>

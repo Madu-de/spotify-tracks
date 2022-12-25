@@ -15,11 +15,7 @@ export class CallbackComponent implements OnInit {
   ngOnInit() {
     let variables = this.getAllFragmentVariables();
     this.connection.token = <string>variables.get('access_token');
-    // let expires = <string>variables.get('expires_in');
-    // console.log(new Date(expires));
     this.cookie.set('token', this.connection.token);
-    this.cookie.set('testititi', this.connection.token);
-    this.cookie.get('');
     this.router.navigateByUrl('/home');
   }
 

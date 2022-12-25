@@ -1,0 +1,31 @@
+div {
+    background-color: #555555;
+    position: relative;
+    top: 20px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow-x: hidden;
+    width: 80vw;
+    margin: auto;
+
+    input {
+        background: none;
+        border: none;
+        height: 30px;
+        font-size: 30px;
+        width: 90%;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    img {
+        height: 30px;
+        margin-left: 20px;
+    }
+}

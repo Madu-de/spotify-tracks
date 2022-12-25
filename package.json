@@ -13,7 +13,8 @@
     "electron": "electron .",
     "electron-build": "electron-forge make",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "serve": "ng serve --host 192.168.178.51"
   },
   "private": true,
   "dependencies": {

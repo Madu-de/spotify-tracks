@@ -6,6 +6,8 @@ import { Directive, ElementRef, Input, HostListener } from '@angular/core';
 export class HotkeyDirective {
 
   @Input() appHotkey: string = '';
+  @Input() hotkeyCallback: Function | undefined;
+  @Input() hotkeyFocusRequired: boolean = false;
 
   constructor(private el: ElementRef) {
     // setTimeout(() => {
@@ -13,9 +15,11 @@ export class HotkeyDirective {
     // }, 1000);
   }
 
-  @HostListener('document:keyup', ['$event']) onKeyUp(e: any) {
-    if (e.key === this.appHotkey) {
-      this.el.nativeElement.click();
-    }
+  @HostListener('document:keyup', ['$event'])
+  onKeyUp(e: any) {
+    if (this.hotkeyFocusRequired && e.target != this.el.nativeElement)
+      return;
+    if (e.key === this.appHotkey)
+      this.hotkeyCallback ? this.hotkeyCallback() : this.el.nativeElement.click();
   }
 }
