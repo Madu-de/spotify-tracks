@@ -82,3 +82,41 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         - Returns the value of the cookie
     - `getAll()`
         - Returns all cookies
+
+## Important components
+
+- `app-artistPreview`
+    - Creates an artist element
+    - Inputs
+        - `src: string`
+        - `artistLink: string`
+        - `artistName: string`
+- `app-songPreview`
+    - Creates an song element
+    - Inputs
+        - `src: string`
+        - `songTitle: string`
+        - `songType: string`
+        - `artist: string`
+        - `songLink: string`
+- `app-artistListPreview`
+    - Creates a list of `app-artistPreview`
+    - Inputs
+        - `artists: Artist[]`
+        - `listTitle: string`
+- `app-songListPreview`
+    - Creates a list of `app-songPreview`
+    - Inputs
+        - `songs: Track[]`
+        - `listTitle: string`
+
+- `app-header`
+    - Creates a header element which shows the title
+    - Inputs
+        - `title: string`
+- `app-footer`
+    - Creates the footer element
+- `app-currentSong`
+    - Creates a current song element which shows the current song
+- `app-navbar`
+    - Creates a navbar element which shows all 3 pages
