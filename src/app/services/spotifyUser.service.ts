@@ -33,4 +33,14 @@ export class SpotifyUserService {
     let topItems = await this.connection.sendGetRequestToSpotify(`/me/top/${topItemType}`);
     return topItems;
   }
+
+  async getUserPlaylists() {
+    let playlists = await this.connection.sendGetRequestToSpotify('/me/playlists');
+    return playlists;
+  }
+
+  async getUserSavedTracks() {
+    let savedTracks = await this.connection.sendGetRequestToSpotify('/me/tracks');
+    return savedTracks;
+  }
 }

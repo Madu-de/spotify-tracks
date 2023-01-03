@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   constructor(public connectionService: ConnectionService) { }
 
   ngOnInit() {
+    sessionStorage.clear();
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Track } from 'src/app/classes/Track';
+import { SpotifyUserService } from 'src/app/services/spotifyUser.service';
 
 @Component({
   selector: 'app-library',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibraryComponent implements OnInit {
 
-  constructor() { }
+  public savedTracks: Track[] = [];
 
-  ngOnInit() {
+  constructor(public user: SpotifyUserService) { }
+
+  async ngOnInit() {
+    let savedTracks = await this.user.getUserSavedTracks();
+    savedTracks.items.forEach((track: any) => {
+      this.savedTracks.push(Track.parseToTrack(track.track));
+    })
   }
 
 }
