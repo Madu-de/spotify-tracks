@@ -18,7 +18,12 @@ export class HeaderComponent implements OnInit {
   }
 
   async loadProfilePicture() {
+    if (sessionStorage.getItem('profilePicture')) {
+      this.profilePicture = <string>sessionStorage.getItem('profilePicture');
+      return;
+    }
     this.profilePicture = await this.spotifyUser.getUserProfilePicture();
+    sessionStorage.setItem('profilePicture', this.profilePicture);
   }
 
 }

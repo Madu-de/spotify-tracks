@@ -1,3 +1,4 @@
+import { FooterComponent } from './features/footer/footer.component';
 import { SpotifyArtistService } from 'src/app/services/spotifyArtist.service';
 import { ArtistPreviewComponent } from './features/artistPreview/artistPreview.component';
 import { HotkeyDirective } from './directives/hotkey.directive';
@@ -38,12 +39,13 @@ import { SearchComponent } from './features/search/search.component';
     ArtistListPreviewComponent,
     CallbackComponent,
     SearchComponent,
+    FooterComponent
   ],
   providers: [ConnectionService, SpotifyArtistService, SpotifyPlayerService, SpotifySearchService, SpotifyUserService, CookieService],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule
   ]
 })
 export class AppModule { }

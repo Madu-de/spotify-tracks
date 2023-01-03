@@ -2,5 +2,5 @@
   {{title}}
 </h1>
 <a [routerLink]="['']">
-  <img [src]="profilePicture" id="profile-picture">
+  <img [src]="profilePicture !== '' ? profilePicture : '/assets/imgs/grey.jpg'" id="profile-picture">
 </a>

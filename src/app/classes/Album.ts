@@ -15,9 +15,9 @@ export class Album {
 
     static parseToAlbum(item: any): Album {
         return new Album(
-            item.images[1].url,
+            item.images[1].url || 'assets/imgs/spotify.png',
             item.name,
-            item.album_group,
+            item.album_group || item.type,
             item.artists[0].name,
             item.external_urls.spotify
         )

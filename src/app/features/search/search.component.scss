@@ -1,4 +1,4 @@
-div {
+div:not(#output) {
     background-color: #555555;
     position: relative;
     top: 20px;
@@ -27,5 +27,17 @@ div {
     img {
         height: 30px;
         margin-left: 20px;
+        cursor: pointer;
     }
+}
+
+#output {
+    position: relative;
+    top: 20px;
+    padding-bottom: 50px;
+}
+
+app-songListPreview,
+app-artistListPreview {
+    margin: 20px;
 }

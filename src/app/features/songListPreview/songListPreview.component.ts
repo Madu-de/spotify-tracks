@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Artist } from 'src/app/classes/Artist';
 import { Track } from 'src/app/classes/Track';
 
 @Component({
@@ -16,5 +15,6 @@ export class SongListPreviewComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }

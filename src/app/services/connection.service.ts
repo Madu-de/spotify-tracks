@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CookieService } from './cookie.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ConnectionService {
   public token: string = <string>this.cookie.get('token');
   public spotifyBaseUrl: string = 'https://api.spotify.com/v1';
 
-  constructor(private cookie: CookieService) { }
+  constructor(private cookie: CookieService, private route: ActivatedRoute) { }
 
 
   connectToSpotify() {
@@ -50,12 +51,14 @@ export class ConnectionService {
         'Content-Type': 'application/json'
       }
     });
-    // console.log(res);
-    let response = await res.json();
-    if (response.error?.status === 401) {
-      this.connectToSpotify();
+    if (res.status === 200) {
+      let response = await res.json();
+      if (response.error?.status === 401) {
+        this.connectToSpotify();
+      }
+      return response;
     }
-    return response;
+    return undefined;
   }
 
   async sendPutRequestToSpotify(url: string) {
@@ -66,5 +69,16 @@ export class ConnectionService {
         'Content-Type': 'application/json'
       }
     });
+  }
+
+  getAllFragmentVariables(): Map<string, string> {
+    let variableArray: Map<string, string> = new Map();
+    this.route.fragment.subscribe(fragment => {
+      fragment?.split('&').forEach(variable => {
+        let splittetVariable = variable.split('=');
+        variableArray.set(splittetVariable[0], splittetVariable[1]);
+      });
+    });
+    return variableArray;
   }
 }

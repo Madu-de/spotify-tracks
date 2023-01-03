@@ -28,6 +28,7 @@
     "@angular/router": "~13.0.0",
     "dotenv": "^16.0.3",
     "electron-squirrel-startup": "^1.0.0",
+    "ngx-rerender": "^1.1.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

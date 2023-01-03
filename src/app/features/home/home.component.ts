@@ -24,32 +24,51 @@ export class HomeComponent implements OnInit {
   constructor(private connectionService: ConnectionService, private user: SpotifyUserService, public player: SpotifyPlayerService, private artist: SpotifyArtistService) { }
 
   async ngOnInit() {
-    // Get Top Songs
-    let topSongs = await this.user.getUserTopItem(TopItemType.TRACKS);
-    topSongs.items.forEach((item: any) => {
-      this.topSongs.push(Track.parseToTrack(item));
-    });
 
-    // Get Top Artists
-    let topArtists = await this.user.getUserTopItem(TopItemType.ARTIST);
-    topArtists.items.forEach((item: any) => {
-      this.topArtists.push(Artist.parseToArtist(item));
-    });
+    // Check if there are stored top Songs in sessionStorage and use them. If not, then get new data from Spotify API
+    if (sessionStorage.getItem('topSongs')) {
+      this.topSongs = <Track[]>JSON.parse(<string>sessionStorage.getItem('topSongs'));
+    } else {
+      let topSongs = await this.user.getUserTopItem(TopItemType.TRACKS);
+      topSongs.items.forEach((item: any) => {
+        this.topSongs.push(Track.parseToTrack(item));
+        sessionStorage.setItem('topSongs', JSON.stringify(this.topSongs));
+      });
+    }
 
-    // Get the last release from all topArtists
-    topArtists.items.forEach(async (item: any) => {
-      let releases = await this.artist.getLastRelease(item.id);
-      this.lastReleasesByTopArtist.push(Track.parseToTrack(releases.items[0]))
-    });
+    if (sessionStorage.getItem('topArtists')) {
+      this.topArtists = <Artist[]>JSON.parse(<string>sessionStorage.getItem('topArtists'));
+      this.lastReleasesByTopArtist = <Track[]>JSON.parse(<string>sessionStorage.getItem('lastReleasesByTopArtist'));
+      this.lastSinglesByTopArtists = <Track[]>JSON.parse(<string>sessionStorage.getItem('lastSinglesByTopArtists'));
+      this.lastAlbumsByTopArtists = <Track[]>JSON.parse(<string>sessionStorage.getItem('lastAlbumsByTopArtists'));
+    } else {
+      // Get Top Artists
+      let topArtists = await this.user.getUserTopItem(TopItemType.ARTIST);
+      topArtists.items.forEach((item: any) => {
+        this.topArtists.push(Artist.parseToArtist(item));
+        sessionStorage.setItem('topArtists', JSON.stringify(this.topArtists));
+      });
 
-    topArtists.items.forEach(async (item: any) => {
-      let singles = await this.artist.getLastSingle(item.id);
-      if (singles.items.length !== 0) this.lastSinglesByTopArtists.push(Track.parseToTrack(singles.items[0]))
-    });
+      // Get the last release from all topArtists
+      topArtists.items.forEach(async (item: any) => {
+        let releases = await this.artist.getLastRelease(item.id);
+        this.lastReleasesByTopArtist.push(Track.parseToTrack(releases.items[0]))
+        sessionStorage.setItem('lastReleasesByTopArtist', JSON.stringify(this.lastReleasesByTopArtist));
+      });
 
-    topArtists.items.forEach(async (item: any) => {
-      let albums = await this.artist.getLastAlbum(item.id);
-      if (albums.items.length !== 0) this.lastAlbumsByTopArtists.push(Album.parseToAlbum(albums.items[0]))
-    });
+      // Get last singles by top artists
+      topArtists.items.forEach(async (item: any) => {
+        let singles = await this.artist.getLastSingle(item.id);
+        if (singles.items.length !== 0) this.lastSinglesByTopArtists.push(Track.parseToTrack(singles.items[0]));
+        sessionStorage.setItem('lastSinglesByTopArtists', JSON.stringify(this.lastSinglesByTopArtists));
+      });
+
+      // Get last albums by top artists
+      topArtists.items.forEach(async (item: any) => {
+        let albums = await this.artist.getLastAlbum(item.id);
+        if (albums.items.length !== 0) this.lastAlbumsByTopArtists.push(Album.parseToAlbum(albums.items[0]))
+        sessionStorage.setItem('lastAlbumsByTopArtists', JSON.stringify(this.lastAlbumsByTopArtists));
+      });
+    }
   }
 }
