@@ -6,6 +6,8 @@ import { ConnectionService } from './connection.service';
 })
 export class SpotifyPlayerService {
 
+  public isPlaying: boolean = false;
+
   constructor(private connection: ConnectionService) { }
 
   async getPlayer() {

@@ -8,7 +8,6 @@ import { SpotifyPlayerService } from 'src/app/services/spotifyPlayer.service';
 })
 export class CurrentSongComponent implements OnInit, OnDestroy {
 
-  public isPlaying: boolean = false;
   public currentSongImg: string = '';
   public author: string = '';
   public title: string = '';
@@ -18,7 +17,7 @@ export class CurrentSongComponent implements OnInit, OnDestroy {
   constructor(public player: SpotifyPlayerService) { }
 
   async ngOnInit() {
-    await this.loadCurrentSong();
+    await this.loadCurrentSong(true);
 
     this.interval = setInterval(async () => {
       await this.loadCurrentSong();
@@ -29,14 +28,19 @@ export class CurrentSongComponent implements OnInit, OnDestroy {
     clearInterval(this.interval);
   }
 
-  async loadCurrentSong() {
+  async togglePlay() {
+    this.player.isPlaying ? this.player.pause() : this.player.play();
+    this.player.isPlaying = !this.player.isPlaying;
+  }
+
+  async loadCurrentSong(firstTime: boolean = false) {
     let player = await this.player.getPlayer();
     if (!player) return;
     this.author = player.item?.artists?.[0].name;
     this.title = player.item?.name;
     this.currentSongImg = player.item?.album?.images?.[2]?.url;
     this.spotifyLink = player.item?.external_urls?.spotify;
-    this.isPlaying = !player.is_playing;
+    if (firstTime) this.player.isPlaying = player.is_playing;
   }
 
   // async switchHotkey() {

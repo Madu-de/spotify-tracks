@@ -6,10 +6,11 @@
   </div>
 </a>
 <!-- TODO -->
-<img src="assets/imgs/play.svg" alt="Play Button" [ngStyle]="{'display': isPlaying ? '' : 'none'}"
-  (click)="player.play(); isPlaying = !isPlaying; " class="current-song-toggle-buttons">
-<img src="assets/imgs/pause.svg" alt="Pause Button" [ngStyle]="{'display': isPlaying ? 'none' : ''}"
-  (click)="player.pause(); isPlaying = !isPlaying;" class="current-song-toggle-buttons">
+<img src="assets/imgs/play.svg" alt="Play Button" [ngStyle]="{'display': player.isPlaying ? 'none' : ''}"
+  (click)="player.play(); player.isPlaying = !player.isPlaying; " class="current-song-toggle-buttons">
+<img src="assets/imgs/pause.svg" alt="Pause Button" [ngStyle]="{'display': player.isPlaying ? '' : 'none'}"
+  (click)="player.pause(); player.isPlaying = !player.isPlaying;" class="current-song-toggle-buttons">
 <!-- <div id="bar"></div> -->
 <ng-template appHotkey="l" [hotkeyCallback]="player.next" [hotkeyIgnoreClasses]="['searchbar']"></ng-template>
 <ng-template appHotkey="j" [hotkeyCallback]="player.previous" [hotkeyIgnoreClasses]="['searchbar']"></ng-template>
+<ng-template appHotkey="k" [hotkeyCallback]="togglePlay" [hotkeyIgnoreClasses]="['searchbar']"></ng-template>

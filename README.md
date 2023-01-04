@@ -128,5 +128,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     - Inputs
         - `appHotkey: string // hotkey key`
         - `hotkeyCallback: Function // callback function if click is not possible`
+        - `hotkeyCallbackParams: any[]`
         - `hotkeyFocusRequired: boolean`
         - `hotkeyIgnoreClasses: string[] // all classes of the targets that are not allowed to trigger the callback/click when they are focused`
