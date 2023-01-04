@@ -1,7 +1,8 @@
 <app-header title="Suche"></app-header>
 <div>
   <input type="text" [placeholder]="placeholderText" appHotkey="Enter" [hotkeyCallback]="search"
-    [hotkeyFocusRequired]="hotkeyFocusRequired" id="search" autocomplete="off" [value]="query" autofocus>
+    [hotkeyFocusRequired]="hotkeyFocusRequired" id="search" autocomplete="off" [value]="query" autofocus
+    class="searchbar">
   <img src="assets/imgs/search.svg" alt="Search" (click)="search()">
 </div>
 <div id="output">

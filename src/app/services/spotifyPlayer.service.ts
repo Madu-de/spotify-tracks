@@ -20,4 +20,12 @@ export class SpotifyPlayerService {
   async pause() {
     await this.connection.sendPutRequestToSpotify('/me/player/pause');
   }
+
+  async next() {
+    await this.connection.sendPostRequestToSpotify('/me/player/next');
+  }
+
+  async previous() {
+    await this.connection.sendPostRequestToSpotify('/me/player/previous');
+  }
 }

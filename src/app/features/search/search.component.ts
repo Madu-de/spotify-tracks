@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Album } from 'src/app/classes/Album';
 import { Artist } from 'src/app/classes/Artist';
 import { TopItemType } from 'src/app/enums/TopItemType.enum';
@@ -11,7 +11,7 @@ import { SpotifyUserService } from 'src/app/services/spotifyUser.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit, OnChanges {
+export class SearchComponent implements OnInit {
 
   public placeholderText: string = '';
   public hotkeyFocusRequired: boolean = true;
@@ -23,10 +23,6 @@ export class SearchComponent implements OnInit, OnChanges {
   public query: string | undefined = '';
 
   constructor(private user: SpotifyUserService, private searchService: SpotifySearchService, private connection: ConnectionService, private cd: ChangeDetectorRef) { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('changesSearch', changes);
-  }
 
   async ngOnInit() {
     let topItems = sessionStorage.getItem('topArtists') ? JSON.parse(<string>sessionStorage.getItem('topArtists')) : await this.user.getUserTopItem(TopItemType.ARTIST);

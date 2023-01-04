@@ -71,6 +71,16 @@ export class ConnectionService {
     });
   }
 
+  async sendPostRequestToSpotify(url: string) {
+    await fetch((this.spotifyBaseUrl + url), {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + this.token,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
   getAllFragmentVariables(): Map<string, string> {
     let variableArray: Map<string, string> = new Map();
     this.route.fragment.subscribe(fragment => {

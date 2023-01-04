@@ -10,6 +10,7 @@ import { SpotifyUserService } from 'src/app/services/spotifyUser.service';
 export class LibraryComponent implements OnInit {
 
   public savedTracks: Track[] = [];
+  public nextSavedTracks: string = '';
 
   constructor(public user: SpotifyUserService) { }
 
@@ -17,7 +18,6 @@ export class LibraryComponent implements OnInit {
     let savedTracks = await this.user.getUserSavedTracks();
     savedTracks.items.forEach((track: any) => {
       this.savedTracks.push(Track.parseToTrack(track.track));
-    })
+    });
   }
-
 }
