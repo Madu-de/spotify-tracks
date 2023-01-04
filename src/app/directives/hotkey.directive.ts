@@ -19,7 +19,6 @@ export class HotkeyDirective {
 
   @HostListener('document:keyup', ['$event'])
   onKeyUp(e: any) {
-    console.log(e);
     if (this.hotkeyFocusRequired && e.target != this.el.nativeElement)
       return;
     if (this.hotkeyIgnoreClasses.some(classes => (<HTMLElement>e.target).classList.contains(classes)))
