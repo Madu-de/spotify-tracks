@@ -23,10 +23,8 @@ export class HotkeyDirective {
   onKeyUp(e: any) {
     if (this.hotkeyFocusRequired && e.target != this.el.nativeElement)
       return;
-    if (this.hotkeyIgnoreClasses.some(classes => (<HTMLElement>e.target).classList.contains(classes))) {
-      console.log('Ignore den kack')
+    if (this.hotkeyIgnoreClasses.some(classes => (<HTMLElement>e.target).classList.contains(classes)))
       return;
-    }
     if (e.key === this.appHotkey)
       this.hotkeyCallback ? this.hotkeyCallback(...this.hotkeyCallbackParams) : this.el.nativeElement.click();
   }
