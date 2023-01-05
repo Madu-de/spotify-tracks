@@ -1,8 +1,9 @@
-<a [href]="spotifyLink" id="current-song-spotify-link" target="_blank">
-  <img [src]="currentSongImg" id="current-song-img">
+<a [href]="player.spotifyLink" id="current-song-spotify-link" target="_blank">
+  <img [src]="player.currentSongImg" id="current-song-img">
   <div>
-    <p id="current-song-text-title">{{title.length >= 22 ? ((title | slice:0:22) + '...') : title}}</p>
-    <p id="current-song-text-author">{{author}}</p>
+    <p id="current-song-text-title">{{player.title.length >= 22 ? ((player.title | slice:0:22) + '...') : player.title}}
+    </p>
+    <p id="current-song-text-author">{{player.author}}</p>
   </div>
 </a>
 <!-- TODO -->

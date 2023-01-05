@@ -51,12 +51,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     - `getArtistsTopTracks(id)`
         - Returns the top tracks of the artist who has the requested id.
 - SpotifyPlayerService
+    - `isPlaying: boolean`
+    - `currentSongImg: string`
+    - `author: string`
+    - `title: string`
+    - `spotifyLink: string`
     - `getPlayer()`
         - Returns the player from the user.
     - `play()`
         - Sets the playback on play.
     - `pause()`
         - Sets the playback on pause.
+    - `next()`
+        - Jump to the next track.
+    - `previous()`
+        - Jump to the previous track.
 - SpotifySearchService
     - `search()`
         - Returns all search results.
