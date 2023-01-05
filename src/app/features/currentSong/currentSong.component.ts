@@ -28,9 +28,19 @@ export class CurrentSongComponent implements OnInit, OnDestroy {
     clearInterval(this.interval);
   }
 
-  async togglePlay() {
-    this.player.isPlaying ? this.player.pause() : this.player.play();
-    this.player.isPlaying = !this.player.isPlaying;
+  async togglePlay(_this: any) {
+    _this.player.isPlaying ? _this.player.pause() : _this.player.play();
+    _this.player.isPlaying = !_this.player.isPlaying;
+  }
+
+  async next(_this: any) {
+    _this.player.next();
+    _this.player.isPlaying = true;
+  }
+
+  async previous(_this: any) {
+    _this.player.previous();
+    _this.player.isPlaying = true;
   }
 
   async loadCurrentSong(firstTime: boolean = false) {

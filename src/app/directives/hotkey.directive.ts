@@ -13,7 +13,7 @@ export class HotkeyDirective {
   @Input() hotkeyFocusRequired: boolean = false;
   @Input() hotkeyIgnoreClasses: string[] = [];
 
-  constructor(private el: ElementRef, private connection: ConnectionService, private player: SpotifyPlayerService) {
+  constructor(private el: ElementRef) {
     // setTimeout(() => {
     //   this.el.nativeElement.click();
     // }, 1000);

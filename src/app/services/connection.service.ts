@@ -13,7 +13,6 @@ export class ConnectionService {
 
   constructor(private cookie: CookieService, private route: ActivatedRoute) { }
 
-
   connectToSpotify() {
     let client_id: string = <string>environment['CLIENT_ID'];
     let redirect_uri: string = <string>environment['REDIRECT_URL'];
@@ -44,41 +43,35 @@ export class ConnectionService {
   }
 
   async sendGetRequestToSpotify(url: string) {
-    let res = await fetch((this.spotifyBaseUrl + url), {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + this.token,
-        'Content-Type': 'application/json'
-      }
-    });
-    if (res.status === 200) {
-      let response = await res.json();
-      if (response.error?.status === 401) {
-        this.connectToSpotify();
-      }
-      return response;
+    let res = await this.sendRequest(url, 'GET');
+    if (res.status === 401) {
+      this.connectToSpotify();
+      return;
     }
-    return undefined;
+    if (res.status !== 200) {
+      return undefined;
+    }
+    let response = await res.json();
+    return response;
   }
 
   async sendPutRequestToSpotify(url: string) {
-    await fetch((this.spotifyBaseUrl + url), {
-      method: 'PUT',
-      headers: {
-        'Authorization': 'Bearer ' + this.token,
-        'Content-Type': 'application/json'
-      }
-    });
+    await this.sendRequest(url, 'PUT');
   }
 
   async sendPostRequestToSpotify(url: string) {
-    await fetch((this.spotifyBaseUrl + url), {
-      method: 'POST',
+    await this.sendRequest(url, 'POST');
+  }
+
+  private async sendRequest(url: string, method: string): Promise<Response> {
+    let res = await fetch((this.spotifyBaseUrl + url), {
+      method: method,
       headers: {
         'Authorization': 'Bearer ' + this.token,
         'Content-Type': 'application/json'
       }
     });
+    return res;
   }
 
   getAllFragmentVariables(): Map<string, string> {
