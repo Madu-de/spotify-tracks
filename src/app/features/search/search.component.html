@@ -1,16 +1,15 @@
 <app-header title="Suche"></app-header>
 <div>
   <input type="text" [placeholder]="placeholderText" appHotkey="Enter" [hotkeyCallback]="search"
-    [hotkeyFocusRequired]="hotkeyFocusRequired" id="search" autocomplete="off" [value]="query" autofocus
-    class="searchbar">
+    [hotkeyFocusRequired]="hotkeyFocusRequired" id="search" autocomplete="off" [value]="query" class="searchbar">
   <img src="assets/imgs/search.svg" alt="Search" (click)="search()">
 </div>
-<div id="output">
-  <app-songListPreview [ngStyle]="{'display': albums.length === 0 ? 'none' : ''}" [songs]="albums"
-    listTitle="Albums"></app-songListPreview>
-  <app-artistListPreview [ngStyle]="{'display': albums.length === 0 ? 'none' : ''}" [artists]="artists"
-    listTitle="Artists"></app-artistListPreview>
+<div id="output" [ngStyle]="{'display': albums.length === 0 ? 'none' : ''}">
+  <app-songListPreview [songs]="albums" listTitle="Albums"></app-songListPreview>
+  <app-songListPreview [songs]="tracks" listTitle="Tracks"></app-songListPreview>
+  <app-artistListPreview [artists]="artists" listTitle="Artists"></app-artistListPreview>
+  <app-songListPreview [songs]="lastReleases" listTitle="Last Releases"></app-songListPreview>
 </div>
 <app-footer></app-footer>
 <app-currentSong></app-currentSong>
-<app-navbar></app-navbar>
+<app-navbar [siteIndex]="1"></app-navbar>
