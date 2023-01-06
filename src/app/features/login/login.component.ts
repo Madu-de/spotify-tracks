@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     sessionStorage.clear();
+  }
+
+  loginWithOwnClientId() {
+    alert(`You have to add "${environment.REDIRECT_URL}" as 'Redirect URIs' in your application`)
+    let clientId = <string>prompt('Enter your client ID:');
+    this.connectionService.connectToSpotify(clientId);
   }
 
 }

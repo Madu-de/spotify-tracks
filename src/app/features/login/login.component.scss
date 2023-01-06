@@ -13,7 +13,7 @@ button {
     font-size: 30px;
     padding: 8px 25px;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
     margin-top: 50px;
@@ -24,7 +24,7 @@ button {
         margin-right: 8px;
     }
 
-    p {
+    p#login {
         color: black;
     }
 
@@ -32,4 +32,14 @@ button {
         translate: 0 -5px;
         box-shadow: 0 0 20px 2px #00CE5A;
     }
+}
+
+:host p:not(#login) {
+    position: absolute;
+    bottom: 15px;
+    // margin-top: 20px;
+    color: grey;
+    font-size: 15px;
+    text-decoration: underline;
+    cursor: pointer;
 }

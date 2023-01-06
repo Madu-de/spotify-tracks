@@ -10,11 +10,13 @@ export class ConnectionService {
 
   public token: string = <string>this.cookie.get('token');
   public spotifyBaseUrl: string = 'https://api.spotify.com/v1';
+  public clientId: string = '';
 
   constructor(private cookie: CookieService, private route: ActivatedRoute) { }
 
-  connectToSpotify() {
-    let client_id: string = <string>environment['CLIENT_ID'];
+  connectToSpotify(clientId?: string) {
+    this.clientId = clientId || <string>environment['CLIENT_ID']
+    let client_id: string = this.clientId;
     let redirect_uri: string = <string>environment['REDIRECT_URL'];
 
     let state = this.generateRandomString(16);
@@ -45,7 +47,7 @@ export class ConnectionService {
   async sendGetRequestToSpotify(url: string) {
     let res = await this.sendRequest(url, 'GET');
     if (res.status === 401) {
-      this.connectToSpotify();
+      this.connectToSpotify(this.clientId);
       return;
     }
     if (res.status !== 200) {
