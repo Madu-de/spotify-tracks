@@ -1,3 +1,14 @@
+app-filterWindow {
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    width: 90%;
+    background-color: #555555;
+    border-radius: 15px;
+    min-height: 80vh;
+    z-index: 2;
+}
+
 div:not(#output) {
     background-color: #555555;
     position: relative;

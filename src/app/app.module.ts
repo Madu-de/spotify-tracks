@@ -23,6 +23,7 @@ import { SpotifyUserService } from './services/spotifyUser.service';
 import { CookieService } from './services/cookie.service';
 import { SearchComponent } from './features/search/search.component';
 import { LibraryComponent } from './features/library/library.component';
+import { FilterWindowComponent } from './features/search/filterWindow/filterWindow.component';
 
 
 @NgModule({
@@ -40,8 +41,9 @@ import { LibraryComponent } from './features/library/library.component';
     ArtistListPreviewComponent,
     CallbackComponent,
     SearchComponent,
+    FilterWindowComponent,
     FooterComponent,
-    LibraryComponent
+    LibraryComponent,
   ],
   providers: [ConnectionService, SpotifyArtistService, SpotifyPlayerService, SpotifySearchService, SpotifyUserService, CookieService],
   bootstrap: [AppComponent],

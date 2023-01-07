@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
   public artists: Artist[] = [];
   public lastReleases: Track[] = [];
   public query: string | undefined = '';
+  public showFilterWindow: boolean = false;
 
   constructor(private user: SpotifyUserService, private searchService: SpotifySearchService, private connection: ConnectionService, private artist: SpotifyArtistService) { }
 
@@ -58,5 +59,10 @@ export class SearchComponent implements OnInit {
     let inputElement = <HTMLInputElement>document.getElementById('search');
     location.hash = `q=${inputElement.value}`;
     location.reload();
+  }
+
+  async toggleFilterWindow() {
+    this.showFilterWindow = !this.showFilterWindow;
+    // document.body.style.overflowX = this.showFilterWindow ? 'hidden' : '';
   }
 }

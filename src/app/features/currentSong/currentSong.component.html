@@ -6,12 +6,12 @@
     <p id="current-song-text-author">{{player.author}}</p>
   </div>
 </a>
-<!-- TODO -->
+
 <img src="assets/imgs/play.svg" alt="Play Button" [ngStyle]="{'display': player.isPlaying ? 'none' : ''}"
   (click)="player.play(); player.isPlaying = !player.isPlaying; " class="current-song-toggle-buttons">
 <img src="assets/imgs/pause.svg" alt="Pause Button" [ngStyle]="{'display': player.isPlaying ? '' : 'none'}"
   (click)="player.pause(); player.isPlaying = !player.isPlaying;" class="current-song-toggle-buttons">
-<!-- <div id="bar"></div> -->
+
 <ng-template appHotkey="l" [hotkeyCallback]="next" [hotkeyCallbackParams]="[this]"
   [hotkeyIgnoreClasses]="['searchbar']"></ng-template>
 <ng-template appHotkey="j" [hotkeyCallback]="previous" [hotkeyCallbackParams]="[this]"
