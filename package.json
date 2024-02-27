@@ -44,7 +44,7 @@
     "@electron-forge/maker-zip": "^6.0.4",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
-    "electron": "^22.0.0",
+    "electron": "^22.3.21",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
