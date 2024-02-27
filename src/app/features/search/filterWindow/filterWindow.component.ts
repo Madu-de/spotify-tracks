@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchComponent } from '../search.component';
 
 @Component({
   selector: 'app-filterWindow',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterWindowComponent implements OnInit {
 
-  constructor() { }
+  constructor(private searchComponent: SearchComponent) { }
 
   ngOnInit() {
+  }
+
+  closeWindow() {
+    this.searchComponent.showFilterWindow = false;
   }
 
 }

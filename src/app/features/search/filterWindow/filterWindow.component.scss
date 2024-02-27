@@ -1,0 +1,57 @@
+:host {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 90%;
+    background-color: #242424;
+    border-radius: 15px;
+    min-height: 50vh;
+    z-index: 5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    font-size: 30px;
+
+    #close {
+        cursor: pointer;
+    }
+}
+
+footer {
+    padding: 15px 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    button {
+        margin: 5px;
+        padding: 5px;
+        border-radius: 10px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:nth-child(1),
+        &:nth-child(2) {
+            border: red 1px solid;
+
+            &:hover {
+                background-color: red;
+            }
+        }
+
+        &:nth-child(3) {
+            border: #00CE5A 1px solid;
+
+            &:hover {
+                background-color: #00CE5A;
+                color: black;
+            }
+        }
+    }
+}

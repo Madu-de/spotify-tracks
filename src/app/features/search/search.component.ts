@@ -24,6 +24,10 @@ export class SearchComponent implements OnInit {
   public lastReleases: Track[] = [];
   public query: string | undefined = '';
   public showFilterWindow: boolean = false;
+  public filter: any = {
+    test1234: 'test11',
+    test: 'test'
+  };
 
   constructor(private user: SpotifyUserService, private searchService: SpotifySearchService, private connection: ConnectionService, private artist: SpotifyArtistService) { }
 
@@ -32,11 +36,8 @@ export class SearchComponent implements OnInit {
     let topItems = sessionStorage.getItem('topArtists') ? JSON.parse(<string>sessionStorage.getItem('topArtists')) : await this.user.getUserTopItem(TopItemType.ARTIST);
     let randomNumber = Math.floor(Math.random() * 5);
     this.placeholderText = topItems[randomNumber]?.name || topItems.items[randomNumber].name + ', ...';
-    this.query = this.connection.getAllFragmentVariables().get('q');
-    if (!this.query) {
-      this.query = '';
-      return;
-    }
+    this.query = this.connection.getAllFragmentVariables().get('q') || '';
+    console.log(JSON.parse(<string>this.connection.getAllFragmentVariables().get('filter')));
     let result = await this.searchService.search(this.query, 'album,artist,playlist,track,show,episode,audiobook');
     result.albums.items.forEach((album: any) => {
       this.albums = [...this.albums, Album.parseToAlbum(album)];
@@ -55,9 +56,9 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  async search() {
+  async search(_this: this) {
     let inputElement = <HTMLInputElement>document.getElementById('search');
-    location.hash = `q=${inputElement.value}`;
+    location.hash = `q=${inputElement.value}&filter=${JSON.stringify(_this.filter)}`;
     location.reload();
   }
 

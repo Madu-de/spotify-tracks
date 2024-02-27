@@ -2,9 +2,12 @@
 <app-filterWindow [ngStyle]="{'display': showFilterWindow ? '' : 'none'}"></app-filterWindow>
 <div>
   <input type="text" [placeholder]="placeholderText" appHotkey="Enter" [hotkeyCallback]="search"
-    [hotkeyFocusRequired]="hotkeyFocusRequired" id="search" autocomplete="off" [value]="query" class="searchbar">
-  <img src="assets/imgs/filter.svg" alt="Filter" (click)="toggleFilterWindow()">
-  <img src="assets/imgs/search.svg" alt="Search" (click)="search()">
+    [hotkeyCallbackParams]="[this]" [hotkeyFocusRequired]="hotkeyFocusRequired" id="search" autocomplete="off"
+    [value]="query" class="searchbar">
+  <span id="filter">
+    <img src="assets/imgs/filter.svg" alt="Filter" (click)="toggleFilterWindow()">
+  </span>
+  <img src="assets/imgs/search.svg" alt="Search" (click)="search(this)">
 </div>
 <div id="output" [ngStyle]="{'display': albums.length === 0 ? 'none' : ''}">
   <app-songListPreview [songs]="albums" listTitle="Albums"></app-songListPreview>
