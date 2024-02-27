@@ -1,6 +1,4 @@
-import { Directive, ElementRef, Input, HostListener } from '@angular/core';
-import { ConnectionService } from '../services/connection.service';
-import { SpotifyPlayerService } from '../services/spotifyPlayer.service';
+import { Directive, ElementRef, Input, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Directive({
   selector: '[appHotkey]'
@@ -8,16 +6,11 @@ import { SpotifyPlayerService } from '../services/spotifyPlayer.service';
 export class HotkeyDirective {
 
   @Input() appHotkey: string = '';
-  @Input() hotkeyCallback: Function | undefined;
-  @Input() hotkeyCallbackParams: any[] = [];
+  @Output() onHotKey: EventEmitter<void> = new EventEmitter();
   @Input() hotkeyFocusRequired: boolean = false;
   @Input() hotkeyIgnoreClasses: string[] = [];
 
-  constructor(private el: ElementRef) {
-    // setTimeout(() => {
-    //   this.el.nativeElement.click();
-    // }, 1000);
-  }
+  constructor(private el: ElementRef) {}
 
   @HostListener('document:keyup', ['$event'])
   onKeyUp(e: any) {
@@ -26,6 +19,6 @@ export class HotkeyDirective {
     if (this.hotkeyIgnoreClasses.some(classes => (<HTMLElement>e.target).classList.contains(classes)))
       return;
     if (e.key === this.appHotkey)
-      this.hotkeyCallback ? this.hotkeyCallback(...this.hotkeyCallbackParams) : this.el.nativeElement.click();
+      this.onHotKey.observed ? this.onHotKey.emit() : this.el.nativeElement.click();
   }
 }

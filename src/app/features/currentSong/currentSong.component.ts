@@ -8,24 +8,23 @@ import { SpotifyPlayerService } from 'src/app/services/spotifyPlayer.service';
 })
 export class CurrentSongComponent implements OnInit {
 
-
   constructor(public player: SpotifyPlayerService) { }
 
   ngOnInit() { }
 
-  async togglePlay(_this: any) {
-    _this.player.isPlaying ? _this.player.pause() : _this.player.play();
-    _this.player.isPlaying = !_this.player.isPlaying;
+  async togglePlay() {
+    this.player.isPlaying ? this.player.pause() : this.player.play();
+    this.player.isPlaying = !this.player.isPlaying;
   }
 
-  async next(_this: any) {
-    _this.player.next();
-    _this.player.isPlaying = true;
+  async next() {
+    this.player.next();
+    this.player.isPlaying = true;
   }
 
-  async previous(_this: any) {
-    _this.player.previous();
-    _this.player.isPlaying = true;
+  async previous() {
+    this.player.previous();
+    this.player.isPlaying = true;
   }
 
   // async loadCurrentSong() {

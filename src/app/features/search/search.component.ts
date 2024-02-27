@@ -56,9 +56,9 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  async search(_this: this) {
+  async search() {
     let inputElement = <HTMLInputElement>document.getElementById('search');
-    location.hash = `q=${inputElement.value}&filter=${JSON.stringify(_this.filter)}`;
+    location.hash = `q=${inputElement.value}&filter=${JSON.stringify(this.filter)}`;
     location.reload();
   }
 

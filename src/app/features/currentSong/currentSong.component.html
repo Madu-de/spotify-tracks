@@ -12,9 +12,9 @@
 <img src="assets/imgs/pause.svg" alt="Pause Button" [ngStyle]="{'display': player.isPlaying ? '' : 'none'}"
   (click)="player.pause(); player.isPlaying = !player.isPlaying;" class="current-song-toggle-buttons">
 
-<ng-template appHotkey="l" [hotkeyCallback]="next" [hotkeyCallbackParams]="[this]"
+<ng-template appHotkey="l" (onHotKey)="next()"
   [hotkeyIgnoreClasses]="['searchbar']"></ng-template>
-<ng-template appHotkey="j" [hotkeyCallback]="previous" [hotkeyCallbackParams]="[this]"
+<ng-template appHotkey="j" (onHotKey)="previous()"
   [hotkeyIgnoreClasses]="['searchbar']"></ng-template>
-<ng-template appHotkey="k" [hotkeyCallback]="togglePlay" [hotkeyCallbackParams]="[this]"
+<ng-template appHotkey="k" (onHotKey)="togglePlay()"
   [hotkeyIgnoreClasses]="['searchbar']"></ng-template>
